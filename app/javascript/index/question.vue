@@ -28,6 +28,16 @@
 const ANSWER = { YES: 1, NO: 0 }
 
 export default {
-  
+  props: {
+    questionText: String,
+  },
+  methods: {
+    onClickYesBtn: function() {
+      this.$emit("click-yes-btn", ANSWER.YES)
+    },
+    onClickNoBtn: function() {
+      this.$emit("click-no-btn", ANSWER.NO)
+    },
+  },
 }
 </script>

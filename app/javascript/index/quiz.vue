@@ -39,7 +39,7 @@ export default {
           answer: ANSWER.NO
         },
         {
-          text: "たまプラーザは街である",
+          text: "DUO3.0で問題アプリを作りたい",
           answer: ANSWER.YES
         },
         {
@@ -67,7 +67,7 @@ export default {
     }
   },
   methods: {
-    doAnswer: function() {
+    doAnswer: function(answer) {
       this.yourAnswers[this.currentIndex] = answer
       this.nextQuestion()
     },

@@ -10,9 +10,13 @@ require("channels")
 
 import { createApp } from "vue";
 import App from "../app.vue"
+import Quiz from "../quiz.vue"
+
+require("../quiz")
 
 document.addEventListener('DOMContentLoaded', () => {
   createApp(App).mount('#app')
+  createApp(Quiz).mount('#quiz')
 })
 
 

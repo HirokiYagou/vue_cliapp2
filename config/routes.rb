@@ -9,6 +9,11 @@ Rails.application.routes.draw do
     get 'password' => 'devise/passwords#new', as: :new_user_password
     post 'password' => 'devise/passwords#create', as: :user_password
   end
-  root to: 'posts#index'
-  resources 'posts', only: :index
+  root to: 'exercises#index'
+  resources :exercises, only: :index do
+    collection do
+      get '/posts/:id', to: 'exercises#post'
+      get '/tweets/:id', to: 'exercises#tweet'
+    end 
+  end
 end

@@ -55,7 +55,7 @@ export default {
   },
   methods: {
     fetchQestions: function() {
-      fetch('/posts.json')
+      fetch('/exercises.json')
         .then(response => {
           return response.json()
         })

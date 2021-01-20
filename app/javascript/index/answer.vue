@@ -39,3 +39,47 @@
   </div>
 </div>
 </template>
+
+<script>
+const CORRECT = { CD: 1, VALUE: "○"}
+const INCORRECT = { CD: 0, VALUE: "×"}
+const MAX_POINT = 100
+
+export default {
+  props: {
+    totalScore: {
+      type: Number,
+      required: true,
+    },
+    questions: Array,
+    yourAnswers: Array,
+  },
+  computed: {
+    corrects: function() {
+      const self = this
+      return this.questions.map(function(q, i) {
+        if (q.answer === self.yourAnswers[i]) {
+          return { cd: CORRECT.CD, value: CORRECT.VALUE }
+        } else {
+          return { cd: INCORRECT.CD, value: INCORRECT.VALUE }
+        }
+      })
+    },
+    maxPoint: function() {
+      return MAX_POINT
+    },
+    isPerfect: function() {
+      return this.totalScore === this.maxPoint
+    }
+  },
+  methods: {
+    onClick: function() {
+      this.$emit("click")
+    },
+    getCorrectClassName: function(correctCd) {
+      return correctCd === CORRECT.CD
+        ? "has-text-weight-bold has-text-white has-background-success" : ""
+    }
+  },
+}
+</script>

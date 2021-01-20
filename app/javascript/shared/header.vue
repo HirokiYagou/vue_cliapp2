@@ -48,6 +48,7 @@
             </a>
           </div>
         </div>
+        <div class="navbar-item">{{ user.email }}さん</div>
       </div>
     </div>
   </nav>
@@ -71,6 +72,12 @@ export default {
   components: {
     'sign-up': SignUp,
     'log-in': LogIn,
+  },
+  props: {
+    user: {
+      type: Object,
+      required: true
+    },
   },
   data() {
     return {

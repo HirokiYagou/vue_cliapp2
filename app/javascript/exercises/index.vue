@@ -1,5 +1,7 @@
 <template>
 <div>
+  <vue-header :user="user"></vue-header>
+
   <table v-if="exerciseType === ''" class="table">
     <thead>
       <tr>
@@ -27,16 +29,18 @@
 </template>
 
 <script>
+import Header from 'shared/header.vue'
 import Post from './post.vue'
 
 export default {
   components: {
+    'vue-header': Header,
     'post': Post,
   },
   data() {
     return {
       lessons: [],
-      userId: 0,
+      user: {},
       lessonId: 0,
       exerciseType: '',
     }
@@ -49,7 +53,7 @@ export default {
         })
         .then(data => {
           this.lessons = data.posts
-          this.userId = data.user_id
+          this.user = data.current_user
         })
         .catch(error => {
           console.log(error)

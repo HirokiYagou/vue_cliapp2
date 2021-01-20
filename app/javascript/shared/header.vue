@@ -48,15 +48,34 @@
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="buttons">
-          <a class="button is-primary">
+          <button type="button" class="button is-primary" @click="onClickSignUp">
             <strong>Sign up</strong>
-          </a>
-          <a class="button is-light">
+          </button>
+          <button class="button is-light" @click="onClickLogIn">
             Log in
-          </a>
+          </button>
         </div>
       </div>
     </div>
   </div>
 </nav>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      isSignUp: false,
+      isLogIn: false,
+    }
+  },
+  methods: {
+    onClickSignUp: function() {
+      this.isSignUp = true
+    },
+    onClickLogIn: function() {
+      this.isLogIn = true
+    },
+  },
+}
+</script>

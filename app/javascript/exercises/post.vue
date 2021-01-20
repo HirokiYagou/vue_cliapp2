@@ -28,6 +28,10 @@ const MAX_POINT = 100
 
 export default {
   props: {
+    questionType: {
+      type: String,
+      required: true,
+    },
     lessonId: {
       type: Number,
       required: true,
@@ -62,7 +66,7 @@ export default {
   },
   methods: {
     fetchQestions: function() {
-      fetch(`/exercises/post/${this.lessonId}.json`)
+      fetch(`/exercises/${this.questionType}/${this.lessonId}.json`)
         .then(response => {
           return response.json()
         })

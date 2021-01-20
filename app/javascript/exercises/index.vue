@@ -18,7 +18,8 @@
   </table>
 
   <post
-    v-if="questionType === 'POST'"
+    v-if="questionType !== ''"
+    :question-type="questionType"
     :lesson-id="lessonId"
   ></post>
 </div>
@@ -55,11 +56,11 @@ export default {
     },
     choosePostQuestions: function(lesson) {
       this.lessonId = lesson.lesson
-      this.questionType = 'POST'
+      this.questionType = 'post'
     },
     chooseTweetQuestions: function(lesson) {
       this.lessonId = lesson.lesson
-      this.questionType = 'TWEET'
+      this.questionType = 'tweet'
     },
   },
   mounted: function() {

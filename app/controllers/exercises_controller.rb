@@ -9,17 +9,11 @@ class ExercisesController < ApplicationController
   
   def post
     posts = Post.where(lesson: params[:id])
-    respond_to do |format|
-      format.html
-      format.json { render json: posts }
-    end
+    render json: posts
   end
   
   def tweet
     tweets = Tweet.where(lesson: params[:id])
-    respond_to do |format|
-      format.html
-      format.json { render json: tweets }
-    end
+    render json: tweets
   end
 end

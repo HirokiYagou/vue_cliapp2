@@ -21,7 +21,6 @@
 
   <post
     v-if="exerciseType !== ''"
-    :user-id="userId"
     :exercise-type="exerciseType"
     :lesson-id="lessonId"
   ></post>

@@ -22,6 +22,7 @@
 <script>
 import Question from './question.vue'
 import Answer from './answer.vue'
+import { csrfToken } from "@rails/ujs"
 
 const ANSWER = { YES: 1, NO: 0 }
 const EXERCISE = { post: 0, tweet: 1}
@@ -91,12 +92,24 @@ export default {
     submitAnswer: function(answer) {
       const TYPE = this.exerciseType
       const sendData = {
-        user_id: this.userId,
         exercise_type: EXERCISE[TYPE],
         question_id: this.currentQuestion.id,
         score: answer,
       }
-      fetch()
+      fetch('/exercises', {
+        method: 'POST',
+        headers: {
+          'X-CSRF-Token': csrfToken(),
+          'Content-Type': 'application/json',
+          },
+        body: JSON.stringify(sendData),
+        })
+        .then(response => {
+          return response.json();
+        })
+        .catch(error => {
+          console.log(error)
+        })
     },
     nextQuestion: function() {
       if (this.currentIndex < this.questions.length) {

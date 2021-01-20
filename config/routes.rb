@@ -12,8 +12,8 @@ Rails.application.routes.draw do
   root to: 'exercises#index'
   resources :exercises, only: :index do
     collection do
-      get '/posts/:id', to: 'exercises#post'
-      get '/tweets/:id', to: 'exercises#tweet'
+      get '/post/:id', to: 'exercises#post'
+      get '/tweet/:id', to: 'exercises#tweet'
     end 
   end
 end

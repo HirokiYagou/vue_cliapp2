@@ -1,5 +1,5 @@
 <template>
-<div class="columns is-mobile is-centered">
+<div v-if="alreadyLoaded" class="columns is-mobile is-centered">
   <div class="column is-half">
     <h1 class="title is-1 has-text-centered">Vue.jsクイズ</h1>
     <question
@@ -27,6 +27,12 @@ const ANSWER = { YES: 1, NO: 0 }
 const MAX_POINT = 100
 
 export default {
+  props: {
+    lessonId: {
+      type: Number,
+      required: true,
+    },
+  },
   components: {
     'question': Question,
     'answer': Answer,
@@ -36,6 +42,7 @@ export default {
       questions: [],
       currentIndex: 0,
       yourAnswers: [],
+      alreadyLoaded: false,
     }
   },
   computed: {
@@ -55,7 +62,7 @@ export default {
   },
   methods: {
     fetchQestions: function() {
-      fetch('/exercises.json')
+      fetch(`/exercises/post/${this.lessonId}.json`)
         .then(response => {
           return response.json()
         })
@@ -65,6 +72,7 @@ export default {
         .catch(error => {
           console.log(error)
         })
+      this.alreadyLoaded = true
     },
     doAnswer: function(answer) {
       this.yourAnswers[this.currentIndex] = answer

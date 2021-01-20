@@ -1,6 +1,6 @@
 <template>
 <div>
-  <table v-if="questionType === ''" class="table">
+  <table v-if="exerciseType === ''" class="table">
     <thead>
       <tr>
         <th>LESSON</th>
@@ -18,8 +18,9 @@
   </table>
 
   <post
-    v-if="questionType !== ''"
-    :question-type="questionType"
+    v-if="exerciseType !== ''"
+    :user-id="userId"
+    :exercise-type="exerciseType"
     :lesson-id="lessonId"
   ></post>
 </div>
@@ -27,18 +28,17 @@
 
 <script>
 import Post from './post.vue'
-// import Tweet from './tweet.vue'
 
 export default {
   components: {
     'post': Post,
-    // 'tweet': Tweet,
   },
   data() {
     return {
       lessons: [],
+      userId: 0,
       lessonId: 0,
-      questionType: '',
+      exerciseType: '',
     }
   },
   methods: {
@@ -48,7 +48,8 @@ export default {
           return response.json()
         })
         .then(data => {
-          this.lessons = data
+          this.lessons = data.posts
+          this.userId = data.user_id
         })
         .catch(error => {
           console.log(error)
@@ -56,11 +57,11 @@ export default {
     },
     choosePostQuestions: function(lesson) {
       this.lessonId = lesson.lesson
-      this.questionType = 'post'
+      this.exerciseType = 'post'
     },
     chooseTweetQuestions: function(lesson) {
       this.lessonId = lesson.lesson
-      this.questionType = 'tweet'
+      this.exerciseType = 'tweet'
     },
   },
   mounted: function() {

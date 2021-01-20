@@ -24,11 +24,16 @@ import Question from './question.vue'
 import Answer from './answer.vue'
 
 const ANSWER = { YES: 1, NO: 0 }
+const EXERCISE = { post: 0, tweet: 1}
 const MAX_POINT = 100
 
 export default {
   props: {
-    questionType: {
+    userId: {
+      type: Number,
+      required: true,
+    },
+    exerciseType: {
       type: String,
       required: true,
     },
@@ -66,7 +71,7 @@ export default {
   },
   methods: {
     fetchQestions: function() {
-      fetch(`/exercises/${this.questionType}/${this.lessonId}.json`)
+      fetch(`/exercises/${this.exerciseType}/${this.lessonId}.json`)
         .then(response => {
           return response.json()
         })
@@ -80,7 +85,18 @@ export default {
     },
     doAnswer: function(answer) {
       this.yourAnswers[this.currentIndex] = answer
+      this.submitAnswer(answer)
       this.nextQuestion()
+    },
+    submitAnswer: function(answer) {
+      const TYPE = this.exerciseType
+      const sendData = {
+        user_id: this.userId,
+        exercise_type: EXERCISE[TYPE],
+        question_id: this.currentQuestion.id,
+        score: answer,
+      }
+      fetch()
     },
     nextQuestion: function() {
       if (this.currentIndex < this.questions.length) {

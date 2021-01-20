@@ -1,4 +1,4 @@
-class PostsController < ApplicationController  
+class ExercisesController < ApplicationController
   def index
     posts = Post.all
     respond_to do |format|

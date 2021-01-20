@@ -1,80 +1,91 @@
 <template>
-<nav class="navbar" role="navigation" aria-label="main navigation">
-  <div class="navbar-brand">
-    <a class="navbar-item" href="https://bulma.io">
-      <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
-    </a>
-
-    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </a>
-  </div>
-
-  <div id="navbarBasicExample" class="navbar-menu">
-    <div class="navbar-start">
-      <a class="navbar-item">
-        Home
+<div>
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://bulma.io">
+        <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
       </a>
 
-      <a class="navbar-item">
-        Documentation
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
       </a>
+    </div>
 
-      <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">
-          More
+    <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item">
+          Home
         </a>
 
-        <div class="navbar-dropdown">
-          <a class="navbar-item">
-            About
-          </a>
-          <a class="navbar-item">
-            Jobs
-          </a>
-          <a class="navbar-item">
-            Contact
-          </a>
-          <hr class="navbar-divider">
-          <a class="navbar-item">
-            Report an issue
-          </a>
-        </div>
-      </div>
-    </div>
+        <a class="navbar-item">
+          Documentation
+        </a>
 
-    <div class="navbar-end">
-      <div class="navbar-item">
-        <div class="buttons">
-          <button type="button" class="button is-primary" @click="onClickSignUp">
-            <strong>Sign up</strong>
-          </button>
-          <button class="button is-light" @click="onClickLogIn">
-            Log in
-          </button>
+        
+      </div>
+
+      <div class="navbar-end">
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            More
+          </a>
+
+          <div class="navbar-dropdown">
+            <a class="navbar-item">
+              About
+            </a>
+            <a class="navbar-item">
+              Jobs
+            </a>
+            <a class="navbar-item">
+              Contact
+            </a>
+            <hr class="navbar-divider">
+            <a class="navbar-item">
+              ログアウト
+            </a>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</nav>
+  </nav>
+
+  <sign-up
+    v-if="deviseMode === 'signUp'"
+    @click-close-modal="closeModal"
+  ></sign-up>
+  <log-in
+    v-if="deviseMode === 'logIn'"
+    @click-close-modal="closeModal"
+  ></log-in>
+</div>
 </template>
 
 <script>
+import SignUp from './sign-up'
+import LogIn from './log-in'
+
 export default {
+  components: {
+    'sign-up': SignUp,
+    'log-in': LogIn,
+  },
   data() {
     return {
-      isSignUp: false,
-      isLogIn: false,
+      deviseMode: '',
     }
   },
   methods: {
     onClickSignUp: function() {
-      this.isSignUp = true
+      this.deviseMode = 'signUp'
     },
     onClickLogIn: function() {
-      this.isLogIn = true
+      this.deviseMode = 'logIn'
+    },
+    closeModal: function() {
+      this.deviseMode = ''
     },
   },
 }

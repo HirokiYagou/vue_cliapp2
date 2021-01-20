@@ -30,10 +30,6 @@ const MAX_POINT = 100
 
 export default {
   props: {
-    userId: {
-      type: Number,
-      required: true,
-    },
     exerciseType: {
       type: String,
       required: true,
@@ -103,12 +99,6 @@ export default {
           'Content-Type': 'application/json',
           },
         body: JSON.stringify(sendData),
-        })
-        .then(response => {
-          return response.json();
-        })
-        .catch(error => {
-          console.log(error)
         })
     },
     nextQuestion: function() {

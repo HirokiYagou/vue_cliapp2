@@ -43,7 +43,7 @@
               Contact
             </a>
             <hr class="navbar-divider">
-            <a class="navbar-item">
+            <a class="navbar-item" href="/users/sign_out" data-method="delete">
               ログアウト
             </a>
           </div>

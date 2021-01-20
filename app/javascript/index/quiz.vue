@@ -33,20 +33,7 @@ export default {
   },
   data() {
     return {
-      questions: [
-        {
-          text: "たまプラーザは駅である",
-          answer: ANSWER.NO
-        },
-        {
-          text: "DUO3.0で問題アプリを作りたい",
-          answer: ANSWER.YES
-        },
-        {
-          text: "ニドラン♂",
-          answer: ANSWER.NO
-        },
-      ],
+      questions: [],
       currentIndex: 0,
       yourAnswers: [],
     }
@@ -67,6 +54,18 @@ export default {
     }
   },
   methods: {
+    fetchQestions: function() {
+      fetch('/posts.json')
+        .then(response => {
+          return response.json()
+        })
+        .then(data => {
+          this.questions = data
+        })
+        .catch(error => {
+          console.log(error)
+        })
+    },
     doAnswer: function(answer) {
       this.yourAnswers[this.currentIndex] = answer
       this.nextQuestion()
@@ -86,6 +85,7 @@ export default {
   },
   mounted: function() {
     this.initYourAnswersArray()
+    this.fetchQestions()
   }
 }
 </script>

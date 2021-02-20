@@ -113,7 +113,10 @@ export default {
     },
     initYourAnswersArray: function() {
       this.yourAnswers = Array(this.questions.length)
-    }
+    },
+    goToHome: function() {
+      window.location.href = '/'
+    },
   },
   mounted: function() {
     this.initYourAnswersArray()

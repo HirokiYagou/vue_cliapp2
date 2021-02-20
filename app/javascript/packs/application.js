@@ -12,7 +12,6 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: 'root_path',
       component: Index,
     }
   ]

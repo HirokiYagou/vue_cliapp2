@@ -31,7 +31,6 @@ export default {
       formData.append('post[text]', this.text)
       formData.append('post[answer]', this.answer)
       formData.append('post[lesson]', this.lesson)
-      
     }
   },
 }

@@ -1,10 +1,9 @@
 class ExercisesController < ApplicationController
   def index
-    posts = Post.group(:lesson)
-    data = { posts: posts, current_user: current_user}
+    @posts = Post.group(:lesson)
     respond_to do |format|
       format.html
-      format.json { render json: data }
+      format.json
     end
   end
 

@@ -12,9 +12,9 @@
     </thead>
     <tbody>
       <tr v-for="lesson in lessons" :key="lesson.lesson">
-        <td><div class="column">LESSON{{ lesson.lesson }}</div></td>
-        <td><div class="button column" @click="choosePostQuestions(lesson)">POST LESSON{{ lesson.lesson }}</div></td>
-        <td><div class="button column" @click="chooseTweetQuestions(lesson)">TWEET LESSON{{ lesson.lesson }}</div></td>
+        <td><div class="column">LESSON{{ lesson }}</div></td>
+        <td><div class="button column" @click="choosePostQuestions(lesson)">POST LESSON{{ lesson }}</div></td>
+        <td><div class="button column" @click="chooseTweetQuestions(lesson)">TWEET LESSON{{ lesson }}</div></td>
       </tr>
     </tbody>
   </table>
@@ -51,19 +51,21 @@ export default {
           return response.json()
         })
         .then(data => {
-          this.lessons = data.posts
-          this.user = data.current_user
+          for (let i = 0; i < data.posts.lessonNum; i++) {
+            this.lessons.push(i + 1)
+          }
+          this.user = data.currentUser
         })
         .catch(error => {
           console.log(error)
         })
     },
     choosePostQuestions: function(lesson) {
-      this.lessonId = lesson.lesson
+      this.lessonId = lesson
       this.exerciseType = 'post'
     },
     chooseTweetQuestions: function(lesson) {
-      this.lessonId = lesson.lesson
+      this.lessonId = lesson
       this.exerciseType = 'tweet'
     },
   },

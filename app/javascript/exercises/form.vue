@@ -25,5 +25,10 @@ export default {
       type: 'posts'
     }
   },
+  methods: {
+    submit: function() {
+      
+    }
+  },
 }
 </script>

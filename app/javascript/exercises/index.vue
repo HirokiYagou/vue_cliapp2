@@ -24,6 +24,8 @@
     :exercise-type="exerciseType"
     :lesson-id="lessonId"
   ></post>
+
+  <vue-form></vue-form>
 </div>
 </template>
 
@@ -36,7 +38,7 @@ export default {
   components: {
     'vue-header': Header,
     'post': Post,
-    'form': formVue,
+    'vue-form': formVue,
   },
   data() {
     return {

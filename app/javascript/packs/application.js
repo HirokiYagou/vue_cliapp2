@@ -4,9 +4,22 @@ require("@rails/activestorage").start()
 require("channels")
 
 import { createApp } from "vue";
-import Index from "exercises/index.vue"
+import { createRouter, createWebHistory } from 'vue-router';
+import Index from "exercises/index.vue";
 
+const router = createRouter({
+  history: createWebHistory(),
+  routes: [
+    {
+      path: '/',
+      name: 'root_path',
+      component: Index,
+    }
+  ]
+})
 
 document.addEventListener('DOMContentLoaded', () => {
-  createApp(Index).mount('#index')
+  const app = createApp(Index)
+  app.use(router)
+  app.mount('#index')
 })

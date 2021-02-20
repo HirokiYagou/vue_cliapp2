@@ -55,7 +55,8 @@ export default {
           return response.json()
         })
         .then(data => {
-          for (let i = 0; i < data.posts.lessonNum; i++) {
+          const lessonNum = data.posts.lessonNum
+          for (let i = 0; i < lessonNum; i++) {
             this.lessons.push(i + 1)
           }
           this.user = data.currentUser

@@ -38,6 +38,10 @@ export default {
         },
         body: formData,
       })
+
+      this.text = ''
+      this.answer = ''
+      this.lesson = ''
     }
   },
 }

@@ -30,11 +30,13 @@
 <script>
 import Header from 'shared/header.vue'
 import Post from './post.vue'
+import formVue from './form.vue'
 
 export default {
   components: {
     'vue-header': Header,
     'post': Post,
+    'form': formVue,
   },
   data() {
     return {

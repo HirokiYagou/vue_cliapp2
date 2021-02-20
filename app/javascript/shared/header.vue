@@ -52,32 +52,13 @@
       </div>
     </div>
   </nav>
-
-  <sign-up
-    v-if="deviseMode === 'signUp'"
-    @click-close-modal="closeModal"
-  ></sign-up>
-  <log-in
-    v-if="deviseMode === 'logIn'"
-    @click-close-modal="closeModal"
-  ></log-in>
 </div>
 </template>
 
 <script>
-import SignUp from './sign-up'
-import LogIn from './log-in'
-
 export default {
-  components: {
-    'sign-up': SignUp,
-    'log-in': LogIn,
-  },
   props: {
-    user: {
-      type: Object,
-      required: true
-    },
+    user: Object,
   },
   data() {
     return {

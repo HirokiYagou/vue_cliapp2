@@ -69,10 +69,6 @@ export default {
   methods: {
     fetchQestions: function() {
       this.$router.push(`/exercises/${this.exerciseType}/${this.lessonId}`)
-      console.log(performance.navigation.type)
-      if (performance.navigation.type !== 0) {
-        window.location.href = '/'
-      }
       fetch(`/exercises/${this.exerciseType}/${this.lessonId}.json`)
         .then(response => {
           return response.json()

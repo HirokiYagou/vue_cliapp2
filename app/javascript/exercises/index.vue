@@ -51,7 +51,6 @@ export default {
   methods: {
     fetchLesson: function() {
       this.$router.push('/')
-      console.log(performance.navigation.type)
       fetch('/exercises.json')
         .then(response => {
           return response.json()

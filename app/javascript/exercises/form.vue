@@ -1,7 +1,7 @@
 <template>
   <div>
     <form @submit.prevent="submit">
-      <textarea name="text" v-model="text" cols="30" rows="10" autofocus></textarea>
+      <textarea name="text" v-model="text" cols="30" rows="10"></textarea>
       <input type="text" v-model="answer" placeholder="answer">
       <input type="text" v-model="lesson" placeholder="lesson">
       <select name="type" v-model="type">

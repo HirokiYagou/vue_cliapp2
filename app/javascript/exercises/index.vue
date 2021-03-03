@@ -50,7 +50,6 @@ export default {
   },
   methods: {
     fetchLesson: function() {
-      this.$router.push('/')
       fetch('/exercises.json')
         .then(response => {
           return response.json()
